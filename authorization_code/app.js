@@ -90,30 +90,29 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-        var options = {
-          url: 'https://api.spotify.com/v1/me',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-        };
+//        var options = {
+//          url: 'https://api.spotify.com/v1/me',
+//          headers: { 'Authorization': 'Bearer ' + access_token },
+//          json: true
+//        };
           
-        var options2 = {
-          url: 'https://api.spotify.com/v1/me/player/volume?volume_percent=100',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-        };
+//        var options2 = {
+//          url: 'https://api.spotify.com/v1/me/player/volume?volume_percent=100',
+//          headers: { 'Authorization': 'Bearer ' + access_token },
+//          json: true
+//        };
           
         var options4 = {
-          url: 'https://api.spotify.com/v1/me/player/play?device_id=152f538c54b32b5f3fc1917662b4954e22657f85',
-          data: '{\'uris\': ["spotify:track:4pdPtRcBmOSQDlJ3Fk945m"]}'
-          ,
+          url: 'https://api.spotify.com/v1/me/player/play',
+          
           headers: { 'Authorization': 'Bearer ' + access_token, 'Accept': 'application/json', 'Content-Type': 'application/json'},
-          json: true
+          json: {"uris": ["spotify:track:5aAx2yezTd8zXrkmtKl66Z", "spotify:track:3NdDpSvN911VPGivFlV5d0"]}
         };
 
-        // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-          console.log(body);
-        });
+//        // use the access token to access the Spotify Web API
+//        request.get(options, function(error, response, body) {
+//          console.log(body);
+//        });
 
         // we can also pass the token to the browser to make requests from there
         res.redirect('/#' +
@@ -122,10 +121,10 @@ app.get('/callback', function(req, res) {
             refresh_token: refresh_token
           }));
           
-        // use the access token to access the Spotify Web API
-        request.put(options2, function(error, response, body) {
-          console.log(body);
-        });
+//        // use the access token to access the Spotify Web API
+//        request.put(options2, function(error, response, body) {
+//          console.log(body);
+//        });
           
         // use the access token to access the Spotify Web API
         request.put(options4, function(error, response, body) {
